@@ -71,13 +71,13 @@ for r in DB1:
 print "A1 = %s" % inline_print(A1)
 
 #To compute Z2, flip the bit in col position
-#Z2 talks to DB2
 Z2 = list(Z1)
 Z2[col] = Z2[col]^1
 
 print ""
 print "Z2 = %s" % inline_print(Z2)
 
+#Z2 talks to DB2
 #Now compute A2
 A2 = []
 for r in DB2:
