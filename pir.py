@@ -65,9 +65,10 @@ print ""
 print "Z1 = %s" % inline_print(Z1)
 
 #Only the column indices with '1' in Z1 will be considered when XOR sum is taken across the columns
-A1 = []
-for r in DB1:
-    A1.append(sum([i&j for i,j in zip(r,Z1)])%2)
+#A1 = []
+#for r in DB1:
+#    A1.append(sum([i&j for i,j in zip(r,Z1)])%2)
+A1 = [sum([i&j for i,j in zip(r,Z1)])%2 for r in DB1]
 print "A1 = %s" % inline_print(A1)
 
 #To compute Z2, flip the bit in col position
@@ -79,16 +80,15 @@ print "Z2 = %s" % inline_print(Z2)
 
 #Z2 talks to DB2
 #Now compute A2
-A2 = []
-for r in DB2:
-    A2.append(sum([i&j for i,j in zip(r,Z2)])%2)
+A2 = [sum([i&j for i,j in zip(r,Z2)])%2 for r in DB2]
 print "A2 = %s" % inline_print(A2)
 
 #Compute A, which is the column containing the element at index_i. The desired element is at index 'row' in this list
 A = [i^j for i,j in zip(A1,A2)]
 
 print ""
-print "A = %s\n" % inline_print(A)
+print " A = %s" % inline_print(A)
+print "A is the same as col %s in DB1\n" % col
 
 required_element = A[row]
 print "Required element: %s" % required_element
